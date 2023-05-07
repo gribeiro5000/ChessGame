@@ -29,77 +29,20 @@ function createColorHouse(positionX, positionY, housePosition){
 }
 
 function createPiece(notationP, house){
-    if(notationP != `1`){
+    if(fen.mate == `+` && notationP == `k` && fen.activeColor == `b` || fen.mate == `+` && notationP == `K` && fen.activeColor == `w`){
+        var img = document.createElement("img")
+        img.className = `piece check`
+        img.id=notationP + house
+        img.src=get.getImgPieceByNotation(notationP)
+        document.getElementById(house).appendChild(img)
+    }
+    else if(notationP != `1`){
         var img = document.createElement("img")
         img.className = `piece`
         img.id=notationP + house
         img.src=get.getImgPieceByNotation(notationP)
-        //img.draggable=`true`
-        //img.addEventListener(`dragstart`, dragAndDrop.dragStart)
-        //img.addEventListener(`dragend`, dragAndDrop.dragEnd)
         document.getElementById(house).appendChild(img)
     }
-    //if(fen.mate != `+`){
-    //    if(validators.activeColor(fen.activeColor) == validators.pieceColor(notationP) && notationP != `1`){
-    //        var img = document.createElement("img")
-    //        img.className = `piece`
-    //        img.id=notationP + house
-    //        img.src=get.getImgPieceByNotation(notationP)
-    //        img.draggable=`true`
-    //        img.addEventListener(`dragstart`, dragAndDrop.dragStart)
-    //        img.addEventListener(`dragend`, dragAndDrop.dragEnd)
-    //        document.getElementById(house).appendChild(img)
-    //    } else if (notationP != `1`){
-    //        var img = document.createElement("img")
-    //        img.className = `piece`
-    //        img.id=notationP + house
-    //        img.src=get.getImgPieceByNotation(notationP)
-    //        img.addEventListener(`click`, function(){
-    //            alert(main.colorAlert())
-    //        })
-    //        img.addEventListener(`dragstart`, function(){
-    //            alert(main.colorAlert())
-    //        })
-    //        document.getElementById(house).appendChild(img)
-    //    }
-    //} else {
-    //    if(validators.activeColor(fen.activeColor) == validators.pieceColor(notationP) && notationP != `1`){
-    //        validators.pieceCheckMoveValidator(notationP, house)
-    //    }
-    //    if(piecesProtectCheckMovements.length > 0 && piecesProtectCheckMovements[piecesProtectCheckMovements.length - 1].notation == notationP && piecesProtectCheckMovements[piecesProtectCheckMovements.length - 1].house == house){
-    //        if(notationP == `K` || notationP == `k`){
-    //            var img = document.createElement("img")
-    //            img.className = `piece check`
-    //            img.id=notationP + house
-    //            img.src=get.getImgPieceByNotation(notationP)
-    //            img.draggable=`true`
-    //            img.addEventListener(`dragstart`, dragAndDrop.dragStart)
-    //            img.addEventListener(`dragend`, dragAndDrop.dragEnd)
-    //            document.getElementById(house).appendChild(img)
-    //        } else {
-    //            var img = document.createElement("img")
-    //            img.className = `piece`
-    //            img.id=notationP + house
-    //            img.src=get.getImgPieceByNotation(notationP)
-    //            img.draggable=`true`
-    //            img.addEventListener(`dragstart`, dragAndDrop.dragStart)
-    //            img.addEventListener(`dragend`, dragAndDrop.dragEnd)
-    //            document.getElementById(house).appendChild(img)
-    //        }
-    //    } else if(notationP != `1`){
-    //        var img = document.createElement("img")
-    //        img.className = `piece`
-    //        img.id=notationP + house
-    //        img.src=get.getImgPieceByNotation(notationP)
-    //        img.addEventListener(`click`, function(){
-    //            alert(main.colorAlertCheck())
-    //        })
-    //        img.addEventListener(`dragstart`, function(){
-    //            alert(main.colorAlertCheck())
-    //        })
-    //        document.getElementById(house).appendChild(img)
-    //    }
-    //} 
 }
 
 function createDragPieces(){
