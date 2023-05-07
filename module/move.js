@@ -1,6 +1,7 @@
 import get from "./get.js"
 import boardVector from "../objects/boardVector.js"
 import fen from "../objects/fen.js"
+import attackedHouses from "../objects/attackedHouses.js"
 
 function predictPieceAttack(pieceId){
     var houses = []
@@ -171,23 +172,34 @@ function predictKing(pieceId){
 
     //castle
     if(boardVector.board[posX][posY].color == `white`){
-        if(fen.castle.indexOf(`Q`) != -1 && boardVector.board[posX][posY - 1].notation == `1` && boardVector.board[posX][posY - 2].notation == `1` && boardVector.board[posX][posY - 3].notation == `1`){
+
+        if(fen.castle.indexOf(`Q`) != -1 && 
+        boardVector.board[posX][posY - 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 1].notation) == -1 &&
+        boardVector.board[posX][posY - 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 2].notation) == -1 &&
+        boardVector.board[posX][posY - 3].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 3].notation) == -1){
             houses.push(...captureLeft(posX, posY, boardVector.board, 2))
         } else {
             houses.push(...captureLeft(posX, posY, boardVector.board, 1))
         }
-        if(fen.castle.indexOf(`K`) != -1){
+        if(fen.castle.indexOf(`K`) != -1 &&
+        boardVector.board[posX][posY + 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1 &&
+        boardVector.board[posX][posY + 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1){
             houses.push(...captureRight(posX, posY, boardVector.board, 2))
         } else{
             houses.push(...captureRight(posX, posY, boardVector.board, 1))
         }
     }if(boardVector.board[posX][posY].color == `black`){
-        if(fen.castle.indexOf(`q`) != -1 && boardVector.board[posX][posY - 1].notation == `1` && boardVector.board[posX][posY - 2].notation == `1` && boardVector.board[posX][posY - 3].notation == `1`){
+        if(fen.castle.indexOf(`q`) != -1 && 
+        boardVector.board[posX][posY - 1].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 1].notation) == -1 &&
+        boardVector.board[posX][posY - 2].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 2].notation) == -1 &&
+        boardVector.board[posX][posY - 3].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 3].notation) == -1){
             houses.push(...captureLeft(posX, posY, boardVector.board, 2))
         } else {
             houses.push(...captureLeft(posX, posY, boardVector.board, 1))
         }
-        if(fen.castle.indexOf(`k`) != -1){
+        if(fen.castle.indexOf(`k`) != -1 &&
+        boardVector.board[posX][posY + 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1 &&
+        boardVector.board[posX][posY + 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1){
             houses.push(...captureRight(posX, posY, boardVector.board, 2))
         } else{
             houses.push(...captureRight(posX, posY, boardVector.board, 1))
