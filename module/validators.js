@@ -222,52 +222,43 @@ function AllowedMoves(){
                     houses.push(...move.predictPieceMove(notationP + houseP))
                     houses.push(...move.predictPieceAttack(notationP + houseP))
 
-                    //Se a peça for um rei, ele entra neste if para verificar se o próximo movimento será um check
-                    //Se for um check, ele não adiciona a casa nas opções de movimentos
-                    if(notationP == `k` || notationP == `K`){
-                        if(houses.length > 0){
-                            for(var pos = 0; pos < houses.length; pos++){
-                                //atualiza vetor para próxima posição
-                                var Lastnotation = boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].notation
-                                var LastColor = boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color
-                                boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].notation = `1`
-                                boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].color = ``
-                                boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].notation = notationP
-                                if(pieceColor(notationP)){
-                                    boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color = `white`
-                                } else if(pieceColor(notationP) == false){
-                                    boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color = `black`
-                                }
-
-                                //verifica se o novo vetor contém o rei sendo atacado
-                                var housesAttacked = []
-                                if(fen.activeColor == `w`){
-                                    housesAttacked = get.getHousesAttackedByBlack()
-                                    if(housesAttacked.indexOf(get.getWhiteKingHouse()) == -1){
-                                        allowedHouse.push(boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].house)
-                                    }
-                                } else if(fen.activeColor == `b`){
-                                    housesAttacked = get.getHousesAttackedByWhite()
-                                    if(housesAttacked.indexOf(get.getBlackKingHouse()) == -1){
-                                        allowedHouse.push(boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].house)
-                                    }
-                                }
-
-                                //Volta a vetor para posição anterior
-                                boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].notation = notationP
-                                if(pieceColor(notationP)){
-                                    boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].color = `white`
-                                } else if(pieceColor(notationP) == false){
-                                    boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].color = `black`
-                                }
-                                boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].notation = Lastnotation
-                                boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color = LastColor
-                            }  
-                        }
-                    } else {
+                    //valida se o próximo movimento irá colocar o rei em xeque
+                    if(houses.length > 0){
                         for(var pos = 0; pos < houses.length; pos++){
-                            allowedHouse.push(boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].house)
-                        }
+                            //atualiza vetor para próxima posição
+                            var Lastnotation = boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].notation
+                            var LastColor = boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color
+                            boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].notation = `1`
+                            boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].color = ``
+                            boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].notation = notationP
+                            if(pieceColor(notationP)){
+                                boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color = `white`
+                            } else if(pieceColor(notationP) == false){
+                                boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color = `black`
+                            }
+                            //verifica se o novo vetor contém o rei sendo atacado
+                            var housesAttacked = []
+                            if(fen.activeColor == `w`){
+                                housesAttacked = get.getHousesAttackedByBlack()
+                                if(housesAttacked.indexOf(get.getWhiteKingHouse()) == -1){
+                                    allowedHouse.push(boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].house)
+                                }
+                            } else if(fen.activeColor == `b`){
+                                housesAttacked = get.getHousesAttackedByWhite()
+                                if(housesAttacked.indexOf(get.getBlackKingHouse()) == -1){
+                                    allowedHouse.push(boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].house)
+                                }
+                            }
+                            //Volta a vetor para posição anterior
+                            boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].notation = notationP
+                            if(pieceColor(notationP)){
+                                boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].color = `white`
+                            } else if(pieceColor(notationP) == false){
+                                boardVector.board[lineToVectorValidator(houseP[1])][columnToVectorValidator(houseP[0])].color = `black`
+                            }
+                            boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].notation = Lastnotation
+                            boardVector.board[lineToVectorValidator(houses[pos][1])][columnToVectorValidator(houses[pos][0])].color = LastColor
+                        }  
                     }
                 } 
                 //insere objeto na lista de movimento de casas permitidas
