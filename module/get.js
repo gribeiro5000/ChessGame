@@ -4,40 +4,40 @@ import move from "./move.js"
 
 function getImgPieceByNotation(notation){
     if(notation == `p`)
-        return `../images/pawnblack.PNG`
+        return `./images/pawnblack.PNG`
     
     if(notation == `r`)
-        return `../images/rookblack.PNG`
+        return `./images/rookblack.PNG`
     
     if(notation == `n`)
-        return `../images/knightLeftblack.PNG`
+        return `./images/knightLeftblack.PNG`
     
     if(notation == `b`)
-        return `../images/bishopblack.PNG`
+        return `./images/bishopblack.PNG`
 
     if(notation == `q`)
-        return `../images/queenblack.PNG`
+        return `./images/queenblack.PNG`
     
     if(notation == `k`)
-        return `../images/kingblack.PNG`
+        return `./images/kingblack.PNG`
     
     if(notation == `P`)
-        return `../images/pawnwhite.PNG`
+        return `./images/pawnwhite.PNG`
     
     if(notation == `R`)
-        return `../images/rookwhite.PNG`
+        return `./images/rookwhite.PNG`
     
     if(notation == `N`)
-        return `../images/knightLeftwhite.PNG`
+        return `./images/knightLeftwhite.PNG`
     
     if(notation == `B`)
-        return `../images/bishopwhite.PNG`
+        return `./images/bishopwhite.PNG`
 
     if(notation == `Q`)
-        return `../images/queenwhite.PNG`
+        return `./images/queenwhite.PNG`
     
     if(notation == `K`)
-        return `../images/kingwhite.PNG`
+        return `./images/kingwhite.PNG`
 }
 
 function getDropHouses(vector, activeColor){
