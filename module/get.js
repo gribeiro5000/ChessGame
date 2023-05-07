@@ -4,40 +4,40 @@ import move from "./move.js"
 
 function getImgPieceByNotation(notation){
     if(notation == `p`)
-        return `./images/pawnblack.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/pawnblack.png`
     
     if(notation == `r`)
-        return `./images/rookblack.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/rookblack.png`
     
     if(notation == `n`)
-        return `./images/knightLeftblack.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/knightLeftblack.png`
     
     if(notation == `b`)
-        return `./images/bishopblack.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/bishopblack.png`
 
     if(notation == `q`)
-        return `./images/queenblack.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/queenblack.png`
     
     if(notation == `k`)
-        return `./images/kingblack.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/kingblack.png`
     
     if(notation == `P`)
-        return `./images/pawnwhite.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/pawnwhite.png`
     
     if(notation == `R`)
-        return `./images/rookwhite.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/rookwhite.png`
     
     if(notation == `N`)
-        return `./images/knightLeftwhite.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/knightLeftwhite.png`
     
     if(notation == `B`)
-        return `./images/bishopwhite.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/bishopwhite.png`
 
     if(notation == `Q`)
-        return `./images/queenwhite.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/queenwhite.png`
     
     if(notation == `K`)
-        return `./images/kingwhite.PNG`
+        return `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/kingwhite.png`
 }
 
 function getDropHouses(vector, activeColor){
