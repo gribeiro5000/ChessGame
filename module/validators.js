@@ -337,22 +337,22 @@ function promotion(piece, houseId){
         var popup = document.querySelector(`dialog`)
 
         var queen = document.createElement(`img`)
-        queen.src = `../pieces/queen_black.png`
+        queen.src = `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/queenblack.png`
         queen.id = `q` + houseId
         queen.addEventListener(`click`, set.promotionPawn)
 
         var rook = document.createElement(`img`)
-        rook.src = `../pieces/rook_black.png`
+        rook.src = `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/rookblack.png`
         rook.id = `r` + houseId
         rook.addEventListener(`click`, set.promotionPawn)
 
         var bishop = document.createElement(`img`)
-        bishop.src = `../pieces/bishop_black.png`
+        bishop.src = `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/bishopblack.png`
         bishop.id = `b` + houseId
         bishop.addEventListener(`click`, set.promotionPawn)
 
         var knight = document.createElement(`img`)
-        knight.src = `../pieces/knightLeft_black.png`
+        knight.src = `https://raw.githubusercontent.com/gribeiro5000/ChessGame/master/images/knightLeftblack.png`
         knight.id = `n` + houseId
         knight.addEventListener(`click`, set.promotionPawn)
         
