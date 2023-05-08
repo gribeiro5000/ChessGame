@@ -86,6 +86,7 @@ function drop(e){
         document.getElementById(childId).remove()
         this.appendChild(pieceDragging)
 
+        validators.enPassant(pieceDragging, houseId)
         validators.promotion(pieceDragging, houseId)
 
         fen.activeColor = convert.convertActiveColor(fen.activeColor)

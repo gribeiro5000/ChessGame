@@ -359,11 +359,15 @@ function promotion(piece, houseId){
 }
 
 function enPassant(piece, houseId){
+
+    //captura a peça do enPassant
     if(piece.id[0] == `P` && houseId == fen.enPassant){
         document.getElementById(houseId[0] + `5`).removeChild(document.getElementById(houseId[0] + `5`).firstChild)   
     } else if(piece.id[0] == `p` && houseId == fen.enPassant){
         document.getElementById(houseId[0] + `4`).removeChild(document.getElementById(houseId[0] + `4`).firstChild)
     }
+
+    //gera o enPassant
     if(piece.id[0] == `P` && piece.id[2] == `2` && houseId[1] == `4`){
         fen.enPassant = houseId[0] + `3`
     } else if(piece.id[0] == `p` && piece.id[2] == `7` && houseId[1] == `5`){
