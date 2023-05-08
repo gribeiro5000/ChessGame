@@ -174,32 +174,32 @@ function predictKing(pieceId){
     if(boardVector.board[posX][posY].color == `white`){
 
         if(fen.castle.indexOf(`Q`) != -1 && 
-        boardVector.board[posX][posY - 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 1].notation) == -1 &&
-        boardVector.board[posX][posY - 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 2].notation) == -1 &&
-        boardVector.board[posX][posY - 3].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 3].notation) == -1){
+        boardVector.board[posX][posY - 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 1].house) == -1 &&
+        boardVector.board[posX][posY - 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 2].house) == -1 &&
+        boardVector.board[posX][posY - 3].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY - 3].house) == -1){
             houses.push(...captureLeft(posX, posY, boardVector.board, 2))
         } else {
             houses.push(...captureLeft(posX, posY, boardVector.board, 1))
         }
-        if(fen.castle.indexOf(`K`) != -1 &&
-        boardVector.board[posX][posY + 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1 &&
-        boardVector.board[posX][posY + 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1){
+        if(fen.castle.indexOf(`K`) != -1 && 
+        boardVector.board[posX][posY + 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].house) == -1 && 
+        boardVector.board[posX][posY + 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 2].house) == -1){
             houses.push(...captureRight(posX, posY, boardVector.board, 2))
         } else{
             houses.push(...captureRight(posX, posY, boardVector.board, 1))
         }
     }if(boardVector.board[posX][posY].color == `black`){
         if(fen.castle.indexOf(`q`) != -1 && 
-        boardVector.board[posX][posY - 1].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 1].notation) == -1 &&
-        boardVector.board[posX][posY - 2].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 2].notation) == -1 &&
-        boardVector.board[posX][posY - 3].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 3].notation) == -1){
+        boardVector.board[posX][posY - 1].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 1].house) == -1 &&
+        boardVector.board[posX][posY - 2].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 2].house) == -1 &&
+        boardVector.board[posX][posY - 3].notation == `1` && attackedHouses[1].indexOf(boardVector.board[posX][posY - 3].house) == -1){
             houses.push(...captureLeft(posX, posY, boardVector.board, 2))
         } else {
             houses.push(...captureLeft(posX, posY, boardVector.board, 1))
         }
         if(fen.castle.indexOf(`k`) != -1 &&
-        boardVector.board[posX][posY + 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1 &&
-        boardVector.board[posX][posY + 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].notation) == -1){
+        boardVector.board[posX][posY + 1].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 1].house) == -1 &&
+        boardVector.board[posX][posY + 2].notation == `1` && attackedHouses[0].indexOf(boardVector.board[posX][posY + 2].house) == -1){
             houses.push(...captureRight(posX, posY, boardVector.board, 2))
         } else{
             houses.push(...captureRight(posX, posY, boardVector.board, 1))
